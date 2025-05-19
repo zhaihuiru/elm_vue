@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import TodoItem from "@/TodoItem.vue";
 
 let newTaskText= ref("abc");
 let todoList = ref([
@@ -29,8 +30,8 @@ class todoItem {
   }
 }
 
-function onDeleteClicked(deletedId: number) {
-  const index = todoList.value.findIndex(item => item.id === deletedId);
+function onDeleteClicked(id: number) {
+  const index = todoList.value.findIndex(item => item.id === id);
   if (index !== -1) {
     todoList.value.splice(index, 1);
   }
@@ -46,12 +47,7 @@ function onDeleteClicked(deletedId: number) {
     </div>
 
     <div class="mt-2em mx-2em">
-      <div v-for="item in todoList" :key="item.id" class="flex justify-between items-center mb-2">
-        <div class="w-3/4">
-          <el-checkbox v-model="item.completed">{{ item.text }}</el-checkbox>
-        </div>
-        <el-button type="danger" @click="onDeleteClicked(item.id)">删除</el-button>
-      </div>
+      <TodoItem v-for="item in todoList" :key="item.id" :itemData="item" @onDeleteClicked="onDeleteClicked"></TodoItem>
     </div>
   </div>
 </template>
