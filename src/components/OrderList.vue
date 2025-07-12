@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import {useRouter} from "vue-router";
+import Bottom from "@/components/Bottom.vue";
 
 const router = useRouter();
-const businessInfo = () => {
-  router.push("/businessInfo");
-}
-const index = () => {
-  router.push("/index");
-}
+
 const order = () => {
   router.push("/order");
 }
@@ -54,28 +50,9 @@ const order = () => {
         </div>
 
       </div>
+    </div>
 
-    </div>
-    <div class="border border-t-gray-3 font-100 text-3 p-3 ">
-      <div class="flex  justify-around text-gray-400">
-        <div @click="index" class="flex flex-col items-center justify-between">
-          <font-awesome-icon :icon="['fas', 'house']"/>
-          <span class="text-center">首页</span>
-        </div>
-        <div @click="businessInfo" class="flex flex-col items-center justify-between">
-          <font-awesome-icon :icon="['fas', 'magnifying-glass']"/>
-          <span class="text-center">发现</span>
-        </div>
-        <div class="flex flex-col items-center justify-between">
-          <font-awesome-icon :icon="['fas', 'cart-shopping']"/>
-          <span class="text-center">订单</span>
-        </div>
-        <div class="flex flex-col items-center justify-between">
-          <font-awesome-icon :icon="['fas', 'user']"/>
-          <span class="text-center">我的</span>
-        </div>
-      </div>
-    </div>
+    <Bottom/>
   </div>
 </template>
 

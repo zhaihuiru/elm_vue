@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import {useRouter} from "vue-router";
 import { ref, computed } from 'vue';
+import sp01 from "@/img/sp01.png"
+import sp02 from "@/img/sp02.png"
+import sp03 from "@/img/sp03.png"
+import sp04 from "@/img/sp04.png"
 
 const router = useRouter();
 const order = () => {
@@ -12,29 +16,29 @@ const businessInfo = ref([
     name: '纯肉鲜肉（水饺）',
     describe: '新鲜猪肉',
     price: 15,
-    quantity: 2,
-    img: '/img/sp01.png'
+    quantity: 0,
+    img: sp01
   },
   {
     name: '玉米鲜肉（水饺）',
     describe: '玉米鲜肉',
     price: 16,
-    quantity: 1,
-    img: '/img/sp02.png'
+    quantity: 0,
+    img: sp02
   },
   {
     name: '虾仁三鲜（蒸饺）',
     describe: '虾仁三鲜',
     price: 22,
     quantity: 0,
-    img: '/img/sp03.png'
+    img: sp03
   },
   {
     name: '素三鲜（蒸饺）',
     describe: '素三鲜',
     price: 15,
     quantity: 0,
-    img: '/img/sp04.png'
+    img: sp04
   }
 ])
 
@@ -48,9 +52,9 @@ function removeItem(index: number) {
   }
 }
 
-const deliveryFee = 2;
+const deliveryFee = 3;
 const cartTotal = computed(() =>
-    businessInfo.value.reduce((sum, item) => sum + item.price * item.quantity, 0)
+    businessInfo.value.reduce((sum, item) => sum + item.price * item.quantity , 0)
 );
 const cartCount = computed(() =>
     businessInfo.value.reduce((count, item) => count + item.quantity, 0)
@@ -72,12 +76,12 @@ const cartCount = computed(() =>
         ¥15起送 ¥3配送
       </div>
       <div class="flex flex-wrap items-center justify-center pt-1 text-3.5 text-gray-5">
-        各种饺子炒菜
+        各种饺子
       </div>
 
       <div class="p-3" v-for="(item, index) in businessInfo" :key="index">
         <div class="flex items-center justify-between pb-3">
-          <img src="../img/sp01.png" class="w-20 h-20 rounded" />
+          <img :src=item.img class="w-20 h-20 rounded" />
           <div class="flex-1 pl-4">
             <div class="text-base font-semibold">{{ item.name }}</div>
             <div class="text-sm text-gray-500">{{ item.describe }}</div>
@@ -110,7 +114,7 @@ const cartCount = computed(() =>
           </div>
         </div>
         <div>
-          <div class="pl-3 text-lg font-semibold">¥{{ cartTotal.toFixed(2) }}</div>
+          <div class="pl-3 text-lg font-semibold">¥ {{ cartTotal.toFixed(2) }}</div>
           <div class="pl-3 text-sm text-gray-300">另需配送费¥{{ deliveryFee }}</div>
         </div>
 

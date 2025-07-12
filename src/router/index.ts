@@ -3,10 +3,11 @@ import Login from "../components/Login.vue";
 import Register from "../components/Register.vue";
 import Index from "../components/Index.vue";
 import Order from '@/components/Order.vue';
-import BusinessInfo from "@/components/BusinessInfo.vue";
+import BusinessInfo1 from "@/components/BusinessInfo1.vue";
 import BusinessList from "@/components/BusinessList.vue";
 import Payment from "@/components/Payment.vue";
 import OrderList from '@/components/OrderList.vue';
+import MyInfo from "@/components/MyInfo.vue";
 const routes = [
     {
         path: '/',
@@ -29,9 +30,19 @@ const routes = [
         component: Order
     },
     {
-        path: '/businessInfo',
-        name: 'BusinessInfo',
-        component: BusinessInfo
+        path: '/businessInfo/1',
+        name: 'BusinessInfo1',
+        component: BusinessInfo1
+    },
+    {
+        path: '/businessInfo/2',
+        name: 'BusinessInfo2',
+        component: BusinessInfo1
+    },
+    {
+        path: '/businessInfo/3',
+        name: 'BusinessInfo3',
+        component: BusinessInfo1
     },
     {
         path: '/businessList',
@@ -48,6 +59,11 @@ const routes = [
         name: 'OrderList',
         component: OrderList
     },
+    {
+        path: '/myInfo',
+        name: 'MyInfo',
+        component: MyInfo
+    }
 ];
 
 const router = createRouter({

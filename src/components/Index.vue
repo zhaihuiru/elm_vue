@@ -1,53 +1,65 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import {useRouter} from "vue-router";
+import Bottom from "@/components/Bottom.vue";
+import sj01 from '@/img/sj01.png';
+import sj02 from '@/img/sj02.png';
+import sj03 from '@/img/sj03.png';
 const router = useRouter();
 const orderList = () => {
   router.push("/orderList");
 }
-const businessInfo = () => {
-  router.push("/businessInfo");
-}
+const businessInfo = (id: number) => {
+  router.push(`/businessInfo/1`);
+};
 const businessList = () => {
   router.push("/businessList");
 }
 
 const merchants = ref([
   {
+    id: 1,
     name: '万家饺子（软件园E18店）',
-    image: '../img/sj01.png',
+    image: sj01,
+    // image: require('../img/sj01.png'),
     stars: '4.9',
     monthlySales: 345,
     minOrder: 15,
     deliveryFee: 3,
     distance: '3.22km',
     deliveryTime: '30分钟',
+    text: '各种饺子',
     newUserDiscount: '饿了么新用户首单立减9元',
-    specialOffer: '特价商品5元起'
+    specialOffer: '特价商品2元起'
   },
   {
+    id: 2,
     name: '小锅饭豆腐馆（全运店）',
-    image: '../img/sj02.png',
+    image: sj02,
     stars: '5.0',
     monthlySales: 12,
-    minOrder: 15,
-    deliveryFee: 3,
-    distance: '3.22km',
-    deliveryTime: '30分钟',
+    minOrder: 20,
+    deliveryFee: 5,
+    distance: '6.5km',
+    deliveryTime: '60分钟',
+    text: '很多豆腐',
     newUserDiscount: '饿了么新用户首单立减9元',
     specialOffer: '特价商品5元起'
   },
+  // 其余此处略
   {
+    id: 3,
     name: '麦当劳麦乐送（全运路店）',
-    image: '../img/sj03.png',
+    image: sj03,
     stars: '4.9',
-    monthlySales: 345,
-    minOrder: 15,
-    deliveryFee: 3,
-    distance: '3.22km',
-    deliveryTime: '30分钟',
+    monthlySales: 45,
+    minOrder: 10,
+    deliveryFee: 2,
+    distance: '4.7km',
+    deliveryTime: '45分钟',
+    text: '炸鸡配汉堡',
     newUserDiscount: '饿了么新用户首单立减9元',
-    specialOffer: '特价商品5元起'
+    specialOffer: '特价商品3元起'
   }
 ]);
 
@@ -80,8 +92,7 @@ onUnmounted(() => {
     <div class="flex p-2 bg-primary">
       <div class="flex items-center w-full bg-white rounded-1" :class="{ 'fixed top-0 left-0 right-0 z-10 bg-white shadow': isFixed }">
         <font-awesome-icon :icon="['fas', 'magnifying-glass']" class="text-gray-400 ml-3 text-center"/>
-        <input type="text" placeholder="搜索饿了么商家、商品名称"
-               class="flex-1 py-2 px-3 text-3 outline-none placeholder-gray-400 "/>
+        <input type="text" placeholder="搜索饿了么商家、商品名称" class="flex-1 py-2 px-3 text-3 outline-none placeholder-gray-400 "/>
       </div>
     </div>
 
@@ -175,7 +186,7 @@ onUnmounted(() => {
   <div>
     <div class="flex items-start justify-start pl-2 w-100 h-40 border-b border-gray"
          v-for="(merchant, index) in merchants" :key="index">
-      <img src="../img/sj01.png" class="w-18 h-20 pt-2"/>
+      <img :src=merchant.image class="w-18 h-20 pt-2"/>
       <div class="pl-2">
         <div class="flex">
           <div @click="businessInfo" class="text-3.75 font-bold text-gray-8">{{ merchant.name }}</div>
@@ -203,7 +214,7 @@ onUnmounted(() => {
           </div>
         </div>
         <div class=" pt-2">
-          <div class="text-3 text-gray-500 rounded-full border-gray-500">各种饺子</div>
+          <div class="text-3 text-gray-500 rounded-full border-gray-500">{{merchant.text}}</div>
           <div class="pt-2 flex">
             <div class="flex w-5 text-3 text-white pl-1 rounded bg-green-500">新</div>
             <div class="text-black text-3 pl-1">{{ merchant.newUserDiscount }}</div>
@@ -225,28 +236,8 @@ onUnmounted(() => {
   </div>
   <div>&nbsp;</div>
 
-  <div class="bottom-0 left-0 right-0 position-fixed bg-white">
-    <div class="border mb-0 border-t-gray-3 font-100 text-3 p-3 ">
-      <div class="flex  justify-around text-gray-400">
-        <div class="flex flex-col items-center justify-between">
-          <font-awesome-icon :icon="['fas', 'house']"/>
-          <span class="text-center">首页</span>
-        </div>
-        <div @click="businessList" class="flex flex-col items-center justify-between">
-          <font-awesome-icon :icon="['fas', 'magnifying-glass']"/>
-          <span class="text-center">发现</span>
-        </div>
-        <div @click="orderList" class="flex flex-col items-center justify-between">
-          <font-awesome-icon :icon="['fas', 'cart-shopping']"/>
-          <span class="text-center">订单</span>
-        </div>
-        <div class="flex flex-col items-center justify-between">
-          <font-awesome-icon :icon="['fas', 'user']"/>
-          <span class="text-center">我的</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <Bottom/>
+
 </template>
 
 <style scoped>

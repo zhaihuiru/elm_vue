@@ -1,15 +1,19 @@
 <template>
   <div id="app">
     <router-view></router-view>
-<!--    <Payment></Payment>-->
+<!--    <MyInfo></MyInfo>-->
+<!--<Login></Login>-->
   </div>
 </template>
 
 <script setup lang="ts">
 
 import Index from "@/components/Index.vue";
-import BusinessInfo from "@/components/BusinessInfo.vue";
+import BusinessInfo1 from "@/components/BusinessInfo1.vue";
 import BusinessList from "@/components/BusinessList.vue";
 import OrderList from "@/components/OrderList.vue";
 import Payment from "@/components/Payment.vue";
+import Register from "@/components/Register.vue";
+import Login from "@/components/Login.vue";
+import MyInfo from "@/components/MyInfo.vue";
 </script>

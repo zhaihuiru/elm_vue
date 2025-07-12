@@ -8,7 +8,9 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Bottom: typeof import('./src/components/Bottom.vue')['default']
     BusinessInfo: typeof import('./src/components/BusinessInfo.vue')['default']
+    BusinessInfo1: typeof import('./src/components/BusinessInfo1.vue')['default']
     BusinessList: typeof import('./src/components/BusinessList.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
@@ -16,10 +18,12 @@ declare module 'vue' {
     Index: typeof import('./src/components/Index.vue')['default']
     Login: typeof import('./src/components/Login.vue')['default']
     Login2: typeof import('./src/components/Login2.vue')['default']
+    MyInfo: typeof import('./src/components/MyInfo.vue')['default']
     Order: typeof import('./src/components/Order.vue')['default']
     OrderList: typeof import('./src/components/OrderList.vue')['default']
     Payment: typeof import('./src/components/Payment.vue')['default']
     Register: typeof import('./src/components/Register.vue')['default']
+    Register2: typeof import('./src/components/Register2.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
